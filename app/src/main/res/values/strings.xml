@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">WeaterForecast</string>
+    <string name="APIKEY">d2af3044bfa40b5bd5ff40cf8ee8034c</string>
+    <string name="metric">metric</string>
+    <string name="imperial">imperial</string>
 </resources>
