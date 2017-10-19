@@ -7,6 +7,7 @@ import com.designhumanist.faragojanos.weaterforecast.model.ForecastedWeather
 import com.laimiux.rxnetwork.RxNetwork
 import rx.Observable
 import rx.Single
+import rx.Single.just
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
@@ -27,6 +28,12 @@ class NetworkService(private val context: Context) {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .toSingle()
+                .flatMap {
+                    if (it.cod == 200) {
+                        just(it)
+                    }
+                    else error(Throwable())
+                }
     }
 
     fun getForecast(city: String): Single<ForecastedWeather> {
@@ -37,6 +44,12 @@ class NetworkService(private val context: Context) {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .toSingle()
+                .flatMap( {
+                    if (it.cod == 200) {
+                        just(it)
+                    }
+                    else error(Throwable())
+                })
     }
 
 }

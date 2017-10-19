@@ -5,6 +5,7 @@ package com.designhumanist.faragojanos.weaterforecast.model
  */
 
 data class CurrentWeather(val id: Int,
+                          val cod: Int,
                           val name: String,
                           val dt: Long,
                           val coord: Coordinates,
