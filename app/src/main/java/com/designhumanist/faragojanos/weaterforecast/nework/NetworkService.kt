@@ -22,7 +22,7 @@ class NetworkService(private val context: Context) {
             RxNetwork.stream(context).observeOn(AndroidSchedulers.mainThread())
 
     fun getWeather(city: String): Single<CurrentWeather> {
-        return WeatherApiService.Factory.create().getCurrentWeather(city,
+        return WeatherApiService.create().getCurrentWeather(city,
                 context.getString(R.string.metric),
                 context.getString(R.string.APIKEY))
                 .subscribeOn(Schedulers.io())
@@ -37,7 +37,7 @@ class NetworkService(private val context: Context) {
     }
 
     fun getForecast(city: String): Single<ForecastedWeather> {
-        return WeatherApiService.Factory.create().getForeCast(city,
+        return WeatherApiService.create().getForeCast(city,
                 DAYS,
                 context.getString(R.string.metric),
                 context.getString(R.string.APIKEY))
@@ -50,6 +50,10 @@ class NetworkService(private val context: Context) {
                     }
                     else error(Throwable())
                 })
+    }
+
+    companion object Factory {
+        fun create(context: Context) = NetworkService(context)
     }
 
 }
