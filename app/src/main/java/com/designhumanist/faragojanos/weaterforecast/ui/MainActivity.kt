@@ -1,13 +1,13 @@
 package com.designhumanist.faragojanos.weaterforecast.ui
 
-import android.support.v7.app.AppCompatActivity
+import android.app.Activity
 import android.os.Bundle
-import com.designhumanist.faragojanos.weaterforecast.R
+import com.designhumanist.faragojanos.weaterforecast.ui.navigation.Navigate
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        Navigate(this).toHome()
     }
 }

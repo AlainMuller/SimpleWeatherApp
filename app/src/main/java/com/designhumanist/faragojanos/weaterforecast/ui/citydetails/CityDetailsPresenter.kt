@@ -9,6 +9,7 @@ import com.designhumanist.faragojanos.weaterforecast.ui.base.BasePresenter
 class CityDetailsPresenter<V: CityDetailsView>: BasePresenter<V>() {
 
     lateinit var networkService: NetworkService
+    var city = ""
 
     override fun bind(view: V) {
         super.bind(view)
@@ -20,17 +21,27 @@ class CityDetailsPresenter<V: CityDetailsView>: BasePresenter<V>() {
             if (!it) {
                 this.view!!.showOffline()
             }
+            else {
+                getData()
+            }
         })
     }
 
-    fun getData(city: String) {
-        compositeSubscriptions.add(networkService.getForecast(city).subscribe(
-                {
-                    view!!.addData(it.list)
-                },
-                {
-                    view!!.onError()
-                }
-        ))
+    fun getData() {
+        compositeSubscriptions.add(networkService.getWeather(city)
+                .zipWith(networkService.getForecast(city),
+                        {
+                            weather, forecast -> Pair(weather, forecast)
+                        }
+                ).subscribe(
+                        {
+                            view!!.addWeather(it.first)
+                            view!!.addForecast(it.second.list)
+                        },
+                        {
+                            view!!.onError()
+                        }
+                )
+        )
     }
 }

@@ -8,4 +8,5 @@ import com.designhumanist.faragojanos.weaterforecast.ui.base.BaseView
  */
 interface HomeView: BaseView {
     fun addData(weather: CurrentWeather)
+    fun reload()
 }

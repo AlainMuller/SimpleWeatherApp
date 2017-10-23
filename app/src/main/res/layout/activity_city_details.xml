@@ -7,4 +7,109 @@
     android:layout_height="match_parent"
     tools:context="com.designhumanist.faragojanos.weaterforecast.ui.citydetails.CityDetailsActivity">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/citySwipeRefreshLayout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="0dp"
+        android:layout_width="0dp">
+
+        <com.designhumanist.faragojanos.weaterforecast.ui.statelayout.StateLayout
+            android:id="@+id/cityStateLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:loadingLayout="@layout/layout_loading"
+            app:offlineLayout="@layout/layout_offline"
+            app:emptyLayout="@layout/layout_empty"
+            app:errorLayout="@layout/layout_error">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:id="@+id/cityTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="City Name"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="weather description"
+                    android:textAlignment="center"
+                    app:layout_constraintLeft_toLeftOf="@+id/cityTextView"
+                    app:layout_constraintRight_toRightOf="@+id/cityTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/cityTextView"/>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+                    app:srcCompat="@drawable/ic_error_outline_blue_48dp"/>
+
+                <TextView
+                    android:id="@+id/currentTempTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <TextView
+                    android:id="@+id/sunTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/currentTempTextView"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/forecastRecyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sunTextView"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </com.designhumanist.faragojanos.weaterforecast.ui.statelayout.StateLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </android.support.constraint.ConstraintLayout>

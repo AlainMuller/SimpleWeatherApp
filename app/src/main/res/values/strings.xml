@@ -3,4 +3,11 @@
     <string name="APIKEY">d2af3044bfa40b5bd5ff40cf8ee8034c</string>
     <string name="metric">metric</string>
     <string name="imperial">imperial</string>
+    <string name="empty_text">Nothing to show</string>
+    <string name="error_text">Something went wrong</string>
+    <string name="network_error_text">You are offline</string>
+    <string name="new_city_title">Add new city</string>
+    <string name="new_city_message">Enter city name</string>
+    <string name="add_city_button">Add</string>
+    <string name="sun">rise: %1$s set: %2$s</string>
 </resources>

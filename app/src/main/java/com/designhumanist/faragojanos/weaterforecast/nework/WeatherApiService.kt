@@ -32,7 +32,7 @@ interface WeatherApiService {
             Retrofit.Builder()
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("api.openweathermap.org/data/2.5")
+                    .baseUrl("http://api.openweathermap.org/data/2.5/")
                     .build().create(WeatherApiService::class.java)
 
     }

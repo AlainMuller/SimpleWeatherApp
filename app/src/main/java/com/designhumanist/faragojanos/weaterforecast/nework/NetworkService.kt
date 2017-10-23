@@ -16,7 +16,7 @@ import rx.schedulers.Schedulers
  */
 
 class NetworkService(private val context: Context) {
-    val DAYS: Int = 5
+    val DAYS: Int = 4
 
     fun networkChangeListener(): Observable<Boolean> =
             RxNetwork.stream(context).observeOn(AndroidSchedulers.mainThread())
