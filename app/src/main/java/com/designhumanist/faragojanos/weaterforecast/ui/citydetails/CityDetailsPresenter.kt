@@ -28,18 +28,21 @@ class CityDetailsPresenter<V: CityDetailsView>: BasePresenter<V>() {
     }
 
     fun getData() {
-        compositeSubscriptions.add(networkService.getWeather(city)
-                .zipWith(networkService.getForecast(city),
+        compositeSubscriptions.add(networkService.getWeather(city).subscribe(
+                {
+                    view!!.addWeather(it)
+                },
+                {
+                    view!!.onError()
+                }
+        ))
+        compositeSubscriptions.add(networkService.getForecast(city)
+                .subscribe(
                         {
-                            weather, forecast -> Pair(weather, forecast)
-                        }
-                ).subscribe(
-                        {
-                            view!!.addWeather(it.first)
-                            view!!.addForecast(it.second.list)
+                            view!!.addForecast(it.list)
                         },
                         {
-                            view!!.onError()
+
                         }
                 )
         )
