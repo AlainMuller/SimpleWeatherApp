@@ -43,9 +43,6 @@ class HomeActivity : AppCompatActivity(), HomeView {
                             })
                     .show()
         }
-
-
-        //reload()
     }
 
     override fun getContext(): Context = this

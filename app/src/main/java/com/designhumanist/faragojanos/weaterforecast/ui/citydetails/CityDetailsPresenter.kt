@@ -42,7 +42,7 @@ class CityDetailsPresenter<V: CityDetailsView>: BasePresenter<V>() {
                             view!!.addForecast(it.list)
                         },
                         {
-
+                            //ignoring api key error
                         }
                 )
         )
