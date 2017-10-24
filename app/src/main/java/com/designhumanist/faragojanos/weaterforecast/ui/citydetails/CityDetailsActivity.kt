@@ -13,6 +13,10 @@ import com.designhumanist.faragojanos.weaterforecast.model.ForecastData
 import com.designhumanist.faragojanos.weaterforecast.ui.citydetails.adapter.ForecastAdapter
 import com.designhumanist.faragojanos.weaterforecast.ui.statelayout.LayoutState
 import kotlinx.android.synthetic.main.activity_city_details.*
+import org.joda.time.DateTime
+import org.joda.time.LocalDateTime
+import org.joda.time.format.DateTimeFormat
+import org.joda.time.format.DateTimeFormatter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -59,9 +63,10 @@ class CityDetailsActivity : AppCompatActivity(), CityDetailsView {
                 .into(imageView)
         currentTempTextView.text = weather.main.temp.toString()
         sunTextView.text = getString(R.string.sun,
-                SimpleDateFormat("hh:mm").format(Date(weather.sys.sunrise)),
-                SimpleDateFormat("hh:mm").format(Date(weather.sys.sunset))
+                DateTime(weather.sys.sunrise).toString(DateTimeFormat.forPattern("HH:mm")),
+                DateTime(weather.sys.sunset).toString(DateTimeFormat.forPattern("HH:mm"))
         )
+
     }
 
 
